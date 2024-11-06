@@ -6,7 +6,7 @@ const fetch_metadata = require('./metadata.js')
 
 /* Addon Manifest */
 const manifest = {
-  id: 'com.undefinedDarkness.stremio.metadata',
+  id: 'com.LDprg.stremio.metadata',
   name: 'Stremio Linux Metadata',
   description: 'Linux Metadata Support For Stremio (MPRIS)',
   catalogs: [],
