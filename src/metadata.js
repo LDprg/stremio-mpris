@@ -1,4 +1,4 @@
-const {fetch} = require('node-fetch')
+const fetch = require('node-fetch')
 
 async function fetch_metadata(m, imdb_id) {
  

@@ -24,29 +24,29 @@ let player = Player({
   supportedInterfaces: ['player']
 })
 
-builder.defineSubtitlesHandler(({type, id, extra}) => {
-	console.log("request for subtitles: "+type+" "+id)
+builder.defineSubtitlesHandler(async d => {
   console.log("Called By Stremio!") 
   // IMDB Id
-  // const id = d.id.split(':')[0];
-  // const metadata = await fetch_metadata(d, id);
-  // // const length = parseMovieRuntime(metadata.runtime).getMilliseconds() * 1000 
+  const id = d.id.split(':')[0];
+  const metadata = await fetch_metadata(d, id);
+  const length = parseMovieRuntime(metadata.runtime).getMilliseconds() * 1000 
 
-  // // Update plyaer --- NEVER USE NUMBERS!!!
-  // let x = {
-  //   'mpris:artUrl': metadata.background || metadata.poster || metadata.logo || "",
-  //   'xesam:title': metadata.name,
-  //   'xesam:comment': [id],
-  //   'xesam:genre': metadata.genre,
-  //   'xesam:artist': metadata.cast,
-  //   // Divide by 10, then trim decimal spaces then parse again
-  //   // 'xesam:userRating': parseFloat((parseFloat(metadata.imdbRating) / 10).toFixed(1)) 
-  // }
-  // console.dir(x)
-  // player.metadata = x
-  // console.log("Finished Updaing Metadata")
-  // player.playbackStatus = 'Playing'
-  // console.log("Set Plalback Status")
+  // Update plyaer --- NEVER USE NUMBERS!!!
+  let x = {
+    'mpris:artUrl': metadata.background || metadata.poster || metadata.logo || "",
+    'mpris:length': length,
+    'xesam:title': metadata.name,
+    'xesam:comment': [id],
+    'xesam:genre': metadata.genre,
+    'xesam:artist': metadata.cast,
+    // Divide by 10, then trim decimal spaces then parse again
+    'xesam:userRating': parseFloat((parseFloat(metadata.imdbRating) / 10).toFixed(1)) 
+  }
+  console.dir(x)
+  player.metadata = x
+  console.log("Finished Updaing Metadata")
+  player.playbackStatus = 'Playing'
+  console.log("Set Plalback Status")
 
   // Empty response
   return Promise.resolve({ subtitles: [] });
