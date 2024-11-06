@@ -1,6 +1,4 @@
-// import bent from 'bent'
-// import fetch from 'node-fetch'
-const fetch = require('node-fetch')
+const {fetch} = require('node-fetch')
 
 async function fetch_metadata(m, imdb_id) {
  
@@ -11,10 +9,10 @@ async function fetch_metadata(m, imdb_id) {
     throw new Error("Non IMDB Id");
   } else {
     
-    // let req = bent('json');
     const req = await fetch(`https://v3-cinemeta.strem.io/meta/${m.type}/${imdb_id}.json`)
     const d = await req.json();
-    // console.dir(d)
+    console.dir(d)
+
     if (d.meta) {
       return d.meta
     } else {

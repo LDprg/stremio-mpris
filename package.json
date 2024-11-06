@@ -1,17 +1,15 @@
 {
   "name": "stremio-metadata",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Linux Metadata Support For Stremio",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node ./src/server.js"
+    "start": "node ./src/server.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "mpris-service": "^2.1.0",
+    "mpris-service": "^2.1.2",
     "node-fetch": "^3.0.0",
-    "stremio-addon-sdk": "^1.6.4"
+    "stremio-addon-sdk": "^1.6.10"
   }
 }
